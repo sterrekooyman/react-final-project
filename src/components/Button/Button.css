@@ -1,0 +1,32 @@
+.button {
+    padding: 10px 22px 10px 22px;
+    border-radius: 999px;
+    color: #432D2D;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: all 200ms ease-in;
+    display: inline-block;
+}
+
+.button-primary {
+    background-color: #FFC350;
+    border: 2px solid #FFC350;
+}
+.button-primary:hover {
+    background-color: #ffb629;
+    border: 2px solid #ffb629;
+}
+
+.button-secondary {
+    border: 2px solid #FFC350;
+}
+.button-secondary:hover {
+    background-color: #ffd991;
+}
+
+.button-group {
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 1rem;
+    column-gap: 1rem;
+}

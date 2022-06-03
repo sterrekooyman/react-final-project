@@ -1,0 +1,48 @@
+.home-header {
+    padding: 5rem 0;
+    background-color: #FFEFE9;
+}
+
+.home-header .column:nth-of-type(1) {
+    padding-right: 6rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.home-header .column:nth-of-type(2) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.home-header .headline-large {
+    font-family: 'Nanum Myeongjo', serif;
+    font-size: 3.4rem;
+    line-height: 1.2;
+    margin-bottom: 2rem;
+}
+.home-header p {
+    margin-bottom: 2rem;
+}
+
+.home-header img {
+    border-radius: 50px;
+}
+
+@media screen and (max-width: 992px) {
+    .home-header .headline-large {
+        font-size: 2.6rem;
+        line-height: 1.2;
+    }
+    .home-header .column:nth-of-type(1) {
+        padding-right: 3rem;
+    }
+    .home-header img {
+        margin-top: 3rem;
+    }
+}
+@media screen and (max-width: 576px) {
+    .home-header img {
+        display: block;
+    }
+}
