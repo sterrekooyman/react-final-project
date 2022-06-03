@@ -3,14 +3,14 @@ import './Navigation.css';
 
 function Navigation() {
     return (
-        <Navigation>
+        <nav>
             <div className="container">
                 <div className="columns">
                     <div className="column col-12">
                     </div>
                 </div>
             </div>
-        </Navigation>
+        </nav>
     );
 }
 

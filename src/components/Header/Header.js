@@ -5,7 +5,7 @@ import {Button, ButtonGroup} from '../Button/Button';
 
 function Header() {
     return (
-        <Header className="home-header">
+        <header className="home-header">
             <div className="container">
                 <div className="columns">
                     <div className="column col-6 col-lg-7 col-sm-12">
@@ -21,7 +21,7 @@ function Header() {
                     </div>
                 </div>
             </div>
-        </Header>
+        </header>
 
     );
 }
