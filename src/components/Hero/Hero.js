@@ -1,19 +1,20 @@
-import headerDog from '../../assets/img/header-dog.jpg';
-import './Header.css';
+import headerDog from '../../assets/img/header/header-dog.jpg';
+import './Hero.css';
 
 import {Button, ButtonGroup} from '../Button/Button';
 
-function Header() {
+function Hero() {
+
     return (
         <header className="home-header">
             <div className="container">
                 <div className="columns">
                     <div className="column col-6 col-lg-7 col-sm-12">
                         <h1 className="headline-large">Wij streven ernaar om alle honden een thuis te geven</h1>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores delectus expedita fugiat inventore ipsam laboriosam molestias nobis. Aspernatur, dolores, magnam.</p>
+                        <p>Wij vinden dat er teveel honden zijn zonder een liefdevol thuis. Ons doel is om zoveel mogelijk honden een fijne en welkome plek te geven. Een thuis waar ze geaccepteerd en geliefd worden, precies zoals ze zijn. </p>
                         <ButtonGroup>
-                            <Button url="#one" variation="primary">Bekijk alle honden</Button>
-                            <Button url="#two" variation="secondary">Inloggen</Button>
+                            <Button url="/advertisements" variation="primary">Bekijk alle honden</Button>
+                            <Button url="/log-in" variation="secondary">Inloggen</Button>
                         </ButtonGroup>
                     </div>
                     <div className="column col-6 col-lg-4 col-sm-12">
@@ -26,4 +27,4 @@ function Header() {
     );
 }
 
-export default Header;
+export default Hero;

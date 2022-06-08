@@ -1,0 +1,27 @@
+.cta {
+    background-color: #FFEFE9;
+}
+
+.cta .col-12 {
+    display:flex;
+    flex-direction: column;
+    padding: 8rem 6rem;
+    text-align:center;
+    align-items: center;
+}
+
+.cta .cta-h2 {
+    margin-bottom:2rem;
+}
+
+.cta p {
+    margin-bottom:2rem;
+}
+
+
+@media screen and (max-width: 576px) {
+    .cta .col-12 {
+        padding-inline:0;
+        padding-block:6rem;
+    }
+}

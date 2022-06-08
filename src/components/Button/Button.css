@@ -4,15 +4,18 @@
     color: #432D2D;
     text-decoration: none;
     text-transform: uppercase;
+    font-weight:bold;
     transition: all 200ms ease-in;
     display: inline-block;
 }
 
-.button-primary {
+.button-primary,
+.button-redirect {
     background-color: #FFC350;
     border: 2px solid #FFC350;
 }
-.button-primary:hover {
+.button-primary:hover,
+.button-redirect:hover {
     background-color: #ffb629;
     border: 2px solid #ffb629;
 }
@@ -20,8 +23,13 @@
 .button-secondary {
     border: 2px solid #FFC350;
 }
-.button-secondary:hover {
+.button-secondary:hover,
+.button-advertisements:hover {
     background-color: #ffd991;
+}
+
+.button-advertisements {
+    border: 1px solid #FFC350;
 }
 
 .button-group {
@@ -29,4 +37,15 @@
     flex-wrap: wrap;
     row-gap: 1rem;
     column-gap: 1rem;
+}
+
+@media screen and (max-width: 992px) {
+
+    .button {
+        font-size:0.9rem;
+    }
+
+    .button-redirect {
+        padding: 5px 11px 5px 11px;
+    }
 }

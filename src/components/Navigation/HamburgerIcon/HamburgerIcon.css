@@ -1,0 +1,8 @@
+.hamburger {
+    cursor:pointer;
+}
+
+.hamburger-column {
+    display:flex;
+    justify-content: flex-end;
+}

@@ -4,3 +4,25 @@ html {
     font-family: 'Roboto', sans-serif;
     font-size: 16px;
 }
+
+.heading-2 {
+    font-family: 'Nanum Myeongjo', serif;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+}
+
+.underline {
+    position:relative;
+    display:inline-block;
+}
+
+.underline:after {
+    position:absolute;
+    left:0;
+    bottom:0;
+    right:0;
+    content:"";
+    height:1px;
+    width:100%;
+    background-color:black;
+}

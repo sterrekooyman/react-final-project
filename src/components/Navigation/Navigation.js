@@ -1,12 +1,18 @@
-
 import './Navigation.css';
 
+import HamburgerIcon from "./HamburgerIcon/HamburgerIcon";
+// import logo from "../../assets/img/logo/Viervoeter.png";
+
 function Navigation() {
+
     return (
-        <nav>
+        <nav className="navigation">
             <div className="container">
                 <div className="columns">
-                    <div className="column col-12">
+                    <div className="col-12 nav-container">
+                        <div className="nav-bar">
+                            <HamburgerIcon/>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -15,3 +21,5 @@ function Navigation() {
 }
 
 export default Navigation;
+
+// <img src={logo} alt="logo"/>

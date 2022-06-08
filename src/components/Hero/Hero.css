@@ -1,6 +1,6 @@
 .home-header {
-    padding: 5rem 0;
-    background-color: #FFEFE9;
+    padding: 6rem 0;
+    background-color: #FFFBFA;
 }
 
 .home-header .column:nth-of-type(1) {
@@ -44,5 +44,12 @@
 @media screen and (max-width: 576px) {
     .home-header img {
         display: block;
+    }
+    .home-header .column:nth-of-type(1) {
+        padding-right: 0;
+        align-items: center;
+    }
+    .home-header {
+        text-align: center;
     }
 }
