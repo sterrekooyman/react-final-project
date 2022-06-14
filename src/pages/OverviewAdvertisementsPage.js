@@ -1,118 +1,53 @@
-import '../css/reset.css';
-import '../css/grid.css';
-import '../css/typography.css';
-import '../css/test.css';
-import '../css/base.css';
+import {useEffect, useState} from "react";
+import {collection, getDocs } from 'firebase/firestore';
 
 import Navigation from "../././components/Navigation/Navigation";
+import {AdvertisementsOverview, AdvertisementsWrapper } from "../components/AdvertisementsOverview/AdvertisementsOverview";
 import Footer from "../././components/Footer/Footer";
-import {OverviewAdvertisements, AdvertisementsWrapper } from "../components/OverviewAdvertisements/OverviewAdvertisements";
+
+import {db} from "../firebase-config";
 
 import murph from '../assets/img/dogs/murph.png';
 
+import '../css/reset.css';
+import '../css/grid.css';
+import '../css/typography.css';
+import '../css/base.css';
+
 function OverviewAdvertisementsPage() {
-    return (
-        <>
+    const [advertisementList, setAdvertisementList] = useState([]);
+    const advertisementCollectionRef = collection(db, "advertisements");
 
-            <Navigation/>
+    useEffect(() => {
+        const getAdvertisements = async() => {
+            const data = await getDocs( advertisementCollectionRef);
+            setAdvertisementList(data.docs.map((doc) => ({...doc.data(), id: doc.id })));
 
-            <AdvertisementsWrapper>
+        };
+        getAdvertisements();
+    })
 
-                <OverviewAdvertisements
-                    image={murph}
-                    title="Dog Murph"
-                    headline="Murph"
-                    age="Leeftijd:"
-                    gender="Geslacht:"
-                    ageSpecific="4 jaar"
-                    genderSpecific="Teef"
-                />
+        return (
+            <>
+                <Navigation/>
 
-                <OverviewAdvertisements
-                    image={murph}
-                    title="Dog Murph"
-                    headline="Murph"
-                    age="Leeftijd:"
-                    gender="Geslacht:"
-                    ageSpecific="4 jaar"
-                    genderSpecific="Teef"
-                />
+                <AdvertisementsWrapper>
 
-                <OverviewAdvertisements
-                    image={murph}
-                    title="Dog Murph"
-                    headline="Murph"
-                    age="Leeftijd:"
-                    gender="Geslacht:"
-                    ageSpecific="4 jaar"
-                    genderSpecific="Teef"
-                />
+                    <AdvertisementsOverview
+                        image={murph}
+                        dogName="Murph"
+                        age="4"
+                        gender="Teefje"
+                    />
 
-                <OverviewAdvertisements
-                    image={murph}
-                    title="Dog Murph"
-                    headline="Murph"
-                    age="Leeftijd:"
-                    gender="Geslacht:"
-                    ageSpecific="4 jaar"
-                    genderSpecific="Teef"
-                />
+                </AdvertisementsWrapper>
 
-                <OverviewAdvertisements
-                    image={murph}
-                    title="Dog Murph"
-                    headline="Murph"
-                    age="Leeftijd:"
-                    gender="Geslacht:"
-                    ageSpecific="4 jaar"
-                    genderSpecific="Teef"
-                />
+                <Footer/>
+            </>
 
-                <OverviewAdvertisements
-                    image={murph}
-                    title="Dog Murph"
-                    headline="Murph"
-                    age="Leeftijd:"
-                    gender="Geslacht:"
-                    ageSpecific="4 jaar"
-                    genderSpecific="Teef"
-                />
+        );
+    }
 
-                <OverviewAdvertisements
-                    image={murph}
-                    title="Dog Murph"
-                    headline="Murph"
-                    age="Leeftijd:"
-                    gender="Geslacht:"
-                    ageSpecific="4 jaar"
-                    genderSpecific="Teef"
-                />
 
-                <OverviewAdvertisements
-                    image={murph}
-                    title="Dog Murph"
-                    headline="Murph"
-                    age="Leeftijd:"
-                    gender="Geslacht:"
-                    ageSpecific="4 jaar"
-                    genderSpecific="Teef"
-                />
-
-                <OverviewAdvertisements
-                    image={murph}
-                    title="Dog Murph"
-                    headline="Murph"
-                    age="Leeftijd:"
-                    gender="Geslacht:"
-                    ageSpecific="4 jaar"
-                    genderSpecific="Teef"
-                />
-
-            </AdvertisementsWrapper>
-
-            <Footer/>
-        </>
-    );
-}
 
 export default OverviewAdvertisementsPage;

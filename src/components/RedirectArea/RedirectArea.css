@@ -7,11 +7,11 @@
     justify-content: space-between;
     align-items:center;
     padding: 1rem 2rem;
+    background-color:#FFFBFA;
 }
 
-.redirect .redirect-content p {
-    font-weight:bold;
-    text-transform:uppercase;
+.redirect p {
+    font-size:1.1rem;
 }
 
 @media screen and (max-width: 992px) {

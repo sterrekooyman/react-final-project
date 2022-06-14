@@ -1,5 +1,5 @@
-import './CallToAction.css';
 import {Button, ButtonGroup} from "../Button/Button";
+import './CallToAction.css';
 
 function CallToAction(){
     return(

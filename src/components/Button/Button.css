@@ -1,5 +1,5 @@
 .button {
-    padding: 10px 22px 10px 22px;
+    padding: 10px 22px;
     border-radius: 999px;
     color: #432D2D;
     text-decoration: none;
@@ -7,15 +7,18 @@
     font-weight:bold;
     transition: all 200ms ease-in;
     display: inline-block;
+    cursor:pointer;
+}
+.button-small {
+    font-size: 0.8rem;
+    padding: 5px 11px;
 }
 
-.button-primary,
-.button-redirect {
+.button-primary {
     background-color: #FFC350;
     border: 2px solid #FFC350;
 }
-.button-primary:hover,
-.button-redirect:hover {
+.button-primary:hover {
     background-color: #ffb629;
     border: 2px solid #ffb629;
 }
@@ -23,13 +26,8 @@
 .button-secondary {
     border: 2px solid #FFC350;
 }
-.button-secondary:hover,
-.button-advertisements:hover {
+.button-secondary:hover {
     background-color: #ffd991;
-}
-
-.button-advertisements {
-    border: 1px solid #FFC350;
 }
 
 .button-group {
@@ -40,7 +38,6 @@
 }
 
 @media screen and (max-width: 992px) {
-
     .button {
         font-size:0.9rem;
     }

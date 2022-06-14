@@ -1,9 +1,3 @@
-import '../css/reset.css';
-import '../css/grid.css';
-import '../css/typography.css';
-import '../css/test.css';
-import '../css/base.css';
-
 import Navigation from "../././components/Navigation/Navigation";
 import Hero from ".././components/Hero/Hero";
 import Article from ".././components/Article/Article";
@@ -13,7 +7,7 @@ import Footer from ".././components/Footer/Footer";
 import articleOne from '../assets/img/article/article-1.png';
 import articleTwo from '../assets/img/article/article-2.png';
 
-function Home() {
+function HomePage() {
     return (
         <div className="App">
             <Navigation/>
@@ -40,4 +34,4 @@ function Home() {
     );
 }
 
-export default Home;
+export default HomePage;

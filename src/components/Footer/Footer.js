@@ -1,8 +1,10 @@
+import NavigationLinks from "../NavigationLinks/NavigationLinks";
+
 import './Footer.css';
+
 import facebook from '../../assets/img/icons/facebook.png';
 import instagram from '../../assets/img/icons/instagram.png';
 import twitter from '../../assets/img/icons/twitter.png';
-import {NavLink} from "react-router-dom";
 
 function Footer(){
     return (
@@ -16,11 +18,7 @@ function Footer(){
                             <img src={twitter} alt="Twitter logo"/>
                         </div>
                         <div className="links">
-                            <NavLink to="/" exact activeClassName="active-link">Home</NavLink>
-                            <NavLink to="advertisements"  activeClassName="active-link">Advertenties</NavLink>
-                            <NavLink to="contact"  activeClassName="active-link">Contact</NavLink>
-                            <NavLink to="log-in"  activeClassName="active-link">Inloggen</NavLink>
-                            <NavLink to="register"  activeClassName="active-link">Registreren</NavLink>
+                            <NavigationLinks/>
                         </div>
                     </div>
                 </div>

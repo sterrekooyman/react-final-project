@@ -1,0 +1,5 @@
+.contact {
+    min-height: calc(100vh - 119px);
+    background-image:url("/src/assets/img/article/form-background.png");
+    background-size:cover;
+}

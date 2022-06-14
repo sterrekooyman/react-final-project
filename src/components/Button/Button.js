@@ -1,3 +1,4 @@
+import {Link} from 'react-router-dom'
 import './Button.css';
 
 export function ButtonGroup({children}) {
@@ -8,9 +9,9 @@ export function ButtonGroup({children}) {
     );
 }
 
-export function Button({variation, url, children}) {
+export function Button({variation, url, size, children}) {
 
     return (
-        <a href={url} className={`button button-${variation}`}>{children}</a>
+        <Link to={url} className={`button button-${variation} button-${size}`}>{children}</Link>
     );
 }

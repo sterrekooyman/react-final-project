@@ -1,6 +1,5 @@
 import './Article.css';
 
-
 function Article({image, title, headline, text}) {
 
     return (

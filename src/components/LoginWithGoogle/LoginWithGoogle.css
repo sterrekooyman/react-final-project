@@ -1,0 +1,25 @@
+.login-with-google {
+    margin-bottom: 1.5rem;
+}
+
+.login-with-google .col-12 {
+    background-color:#FFFBFA;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login-with-google p {
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+@media screen and (max-width: 992px) {
+    .login-with-google {
+        margin-bottom:2rem;
+    }
+}

@@ -1,0 +1,33 @@
+.advertisements-card {
+    margin: 3rem 2rem 2rem 2rem;
+}
+
+.advertisements-card .image-wrapper {
+    border-radius: 10px 10px 0 0;
+    overflow: hidden;
+    aspect-ratio: 4/3;
+}
+.advertisements-card .image-wrapper img {
+    object-fit: cover;
+}
+
+.advertisements-card .content {
+    padding: 1.4rem 1.4rem 1.6rem 1.4rem;
+}
+.advertisements-card .specifics {
+    color:#6A6A6A;
+    margin-bottom: 1rem;
+}
+
+.advertisements-card h2 {
+    padding-bottom:1rem;
+    text-transform: uppercase;
+}
+
+.advertisements-card .button-advertisements {
+    font-size:0.8rem;
+    margin-top:1rem;
+}
+
+
+
