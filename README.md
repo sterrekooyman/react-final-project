@@ -2,7 +2,8 @@
 
 Dit project is opgezet met React. Zorg ervoor dat Node.js en NPM geinstalleerd zijn.
 
-Stap 1. npm install Stap 2. npm start
+- Stap 1. npm install
+- Stap 2. npm start
 
 **src**
 
