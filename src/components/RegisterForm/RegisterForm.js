@@ -1,9 +1,10 @@
 import {useState} from "react";
 import {useForm} from 'react-hook-form';
+import {useNavigate} from 'react-router-dom';
 
 import './RegisterForm.css';
 
-import { useAuth } from "../../Contexts/AuthContext";
+import {useAuth} from "../../Contexts/AuthContext";
 
 function RegisterForm() {
     const {
@@ -13,29 +14,30 @@ function RegisterForm() {
     } = useForm();
 
     const [errorMessage, setErrorMessage] = useState(null)
-
-    const { signUp } = useAuth();
+    let navigate = useNavigate();
+    const {signUp} = useAuth();
 
     const onSubmit = async (data) => {
         try {
             await signUp(data.email, data.password);
+            navigate('/');
         } catch (err) {
-            if (err.code == "auth/email-already-in-use") {
+            if (err.code === "auth/email-already-in-use") {
                 setErrorMessage("The email address is already in use");
-            } else if (err.code == "auth/invalid-email") {
+            } else if (err.code === "auth/invalid-email") {
                 setErrorMessage("The email address is not valid.");
-            } else if (err.code == "auth/operation-not-allowed") {
+            } else if (err.code === "auth/operation-not-allowed") {
                 setErrorMessage("Operation not allowed.");
-            } else if (err.code == "auth/weak-password") {
+            } else if (err.code === "auth/weak-password") {
                 setErrorMessage("The password is too weak.");
             }
         }
     };
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)} className="shadow">
+        <form id="register" onSubmit={handleSubmit(onSubmit)} className="shadow">
             <legend>Registreren</legend>
-            {errorMessage && <p className="error" >{errorMessage}</p>}
+            {errorMessage && <p className="error">{errorMessage}</p>}
 
             <label htmlFor="email">
                 Emailadres
@@ -45,7 +47,7 @@ function RegisterForm() {
                         required: "Dit veld is verplicht"
                     })}
                 />
-                {errors.email && <p className="error" >{errors.email.message}</p>}
+                {errors.email && <p className="error">{errors.email.message}</p>}
             </label>
 
             <label htmlFor="password">

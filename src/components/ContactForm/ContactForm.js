@@ -1,16 +1,31 @@
 import {useForm} from 'react-hook-form';
+
+import {addDoc, collection} from "firebase/firestore";
+
+import {db} from '../../firebase-config';
+
 import './ContactForm.css';
 
 function ContactForm() {
+    const contactFormCollectionRef = collection(db, 'contactforms');
+
     const {
         register,
         handleSubmit,
         formState: {errors},
     } = useForm();
-    const onSubmit = (data) => console.log(data);
+
+    const createContactForm = async (data) => {
+        try {
+            await addDoc(contactFormCollectionRef, data);
+            document.getElementById('contactform').reset();
+        } catch (error) {
+            console.log(error)
+        }
+    }
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)} className="shadow">
+        <form id="contactform" onSubmit={handleSubmit(createContactForm)} className="shadow">
             <legend>Contact</legend>
 
             <label htmlFor="name">
@@ -32,7 +47,7 @@ function ContactForm() {
                         required: "Dit veld is verplicht"
                     })}
                 />
-                {errors.email && <p className="error" >{errors.email.message}</p>}
+                {errors.email && <p className="error">{errors.email.message}</p>}
             </label>
 
             <label htmlFor="message">

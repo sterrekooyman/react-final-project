@@ -1,44 +1,44 @@
 form {
-    padding:2rem;
-    margin: 4rem 0 1.5rem;
-    background-color:#FFFBFA;
+    padding: 2rem;
+    margin: 2rem 0 1.5rem;
+    background-color: #FFFBFA;
 }
 
 form legend {
-    margin-bottom:1rem;
+    margin-bottom: 1rem;
     text-transform: uppercase;
-    font-size:1.5rem;
+    font-size: 1.5rem;
     letter-spacing: 1px;
 }
 
 form label {
-    margin-bottom:1.5rem;
+    margin-bottom: 1.5rem;
     text-transform: uppercase;
-    display:block;
+    display: block;
 }
 
 form input,
 form textarea {
-    padding:0.2rem 0.5rem;
-    width:100%;
-    border:1px solid black;
+    padding: 0.2rem 0.5rem;
+    width: 100%;
+    border: 1px solid black;
 
 }
 
 form textarea {
-    width:100%;
-    min-height:8rem;
+    width: 100%;
+    min-height: 8rem;
     vertical-align: top;
 }
 
 form .error,
 form .database-error {
-    margin-top:0.4rem;
+    margin-top: 0.4rem;
     text-transform: none;
     padding: 0.2rem 0.5rem;
-    background-color:#ffaeae;
-    border-radius:0.5rem;
-    display:inline-block;
+    background-color: #ffaeae;
+    border-radius: 0.5rem;
+    display: inline-block;
 }
 
 form .database-error {
@@ -47,7 +47,7 @@ form .database-error {
 }
 
 form input[type=file] {
-    margin-top:0.5rem;
-    padding:0;
-    border:none;
+    margin-top: 0.5rem;
+    padding: 0;
+    border: none;
 }

@@ -7,14 +7,14 @@ import {useState} from "react";
 import MobileNavigation from "../MobileNavigation/MobileNavigation";
 import NavigationLinks from "../NavigationLinks/NavigationLinks";
 
-import logo from "../../assets/img/logo/logo-tree.png";
+import logo from "../../assets/img/logo/logo.png";
 
 function Navigation() {
     const [open, setOpen] = useState(false);
 
     window.addEventListener('resize', (event) => {
         console.log(window.innerWidth);
-        if (window.innerWidth > 992 ) {
+        if (window.innerWidth > 992) {
             setOpen(false);
         }
     });

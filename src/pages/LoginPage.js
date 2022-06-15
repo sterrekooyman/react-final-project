@@ -19,7 +19,7 @@ function LoginPage() {
                             <RedirectArea
                                 text="Nog geen account? Registreer hier!"
                                 buttonText="Registreren"
-                                buttonUrl="/register"
+                                buttonUrl="/registreer"
                                 buttonVariation="secondary"
                             />
                         </div>

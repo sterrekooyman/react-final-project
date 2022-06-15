@@ -1,8 +1,22 @@
 import './AdvertisementUpper.css';
+import {HashLink} from "react-router-hash-link";
 
-function AdvertisementUpper({image, name, description, subtext, age, gender, size, chipped, sterilized, specialCare, compatibleCats, compatibleChildren, compatibleDogs}) {
+function AdvertisementUpper({
+                                image,
+                                name,
+                                description,
+                                subtext,
+                                age,
+                                gender,
+                                size,
+                                chipped,
+                                compatibleCats,
+                                compatibleChildren,
+                                compatibleDogs
+                            }) {
 
-    return(
+
+    return (
         <article className="advertisement-upper">
             <div className="container">
                 <div className="columns shadow">
@@ -34,10 +48,6 @@ function AdvertisementUpper({image, name, description, subtext, age, gender, siz
                                     <td>{chipped}</td>
                                 </tr>
                                 <tr>
-                                    <td>Gesteriliseerd</td>
-                                    <td>{sterilized}</td>
-                                </tr>
-                                <tr>
                                     <td>Kan samen met katten:</td>
                                     <td>{compatibleCats}</td>
                                 </tr>
@@ -50,6 +60,7 @@ function AdvertisementUpper({image, name, description, subtext, age, gender, siz
                                     <td>{compatibleDogs}</td>
                                 </tr>
                             </table>
+                            <HashLink className="button button-primary" to="#adoptionform">Adopteer mij</HashLink>
                         </div>
                     </div>
                 </div>

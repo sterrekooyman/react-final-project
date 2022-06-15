@@ -1,8 +1,8 @@
 import {NavLink} from "react-router-dom";
-import { useAuth } from "../../Contexts/AuthContext";
+import {useAuth} from "../../Contexts/AuthContext";
 
 function NavigationLinks() {
-    const { user, logOut } = useAuth();
+    const {user, logOut} = useAuth();
 
     return (
         <>
@@ -11,8 +11,8 @@ function NavigationLinks() {
             {
                 user ?
                     <>
-                    <NavLink to="/plaats-advertentie" activeClassName="active">Plaats advertentie</NavLink>
-                    <NavLink onClick={logOut} to="/" activeClassName="active">Uitloggen</NavLink>
+                        <NavLink to="/plaats-advertentie" activeClassName="active">Plaats advertentie</NavLink>
+                        <NavLink onClick={logOut} to="/" activeClassName="active">Uitloggen</NavLink>
                     </>
                     : <>
                         <NavLink to="/log-in" activeClassName="active">Inloggen</NavLink>

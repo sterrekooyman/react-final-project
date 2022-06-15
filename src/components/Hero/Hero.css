@@ -1,16 +1,18 @@
 .hero {
-    padding-top: 4rem;
+    padding-top: 5rem;
 }
 
 .hero .column:first-of-type {
     margin-right: auto;
 }
+
 .hero h1 {
     font-family: 'Nanum Myeongjo', serif;
     font-size: 3rem;
     line-height: 1.2;
     margin-bottom: 2rem;
 }
+
 .hero p {
     margin-bottom: 2rem;
 }
@@ -32,22 +34,27 @@
         font-size: 2.6rem;
         line-height: 1.2;
     }
+
     .hero .column:nth-of-type(1) {
         padding-right: 3rem;
     }
+
     .hero .illustration {
         margin-top: -9rem;
     }
 }
+
 @media screen and (max-width: 768px) {
     .hero .illustration {
         margin-top: 2rem;
     }
 }
+
 @media screen and (max-width: 576px) {
     .hero {
         padding: 3rem 0;
     }
+
     .hero .column:nth-of-type(1) {
         padding-right: 0;
         align-items: center;

@@ -1,9 +1,9 @@
 .advertisement-upper {
-    margin-top:3rem;
+    margin-top: 3rem;
 }
 
 .advertisement-upper .description {
-    padding:3rem;
+    padding: 3rem;
 }
 
 .advertisement-upper .image-wrapper {
@@ -11,6 +11,7 @@
     overflow: hidden;
     height: 100%;
 }
+
 .advertisement-upper .image-wrapper img {
     object-fit: cover;
     height: 100%;
@@ -18,38 +19,35 @@
 
 .advertisement-upper .description h2 {
     text-transform: uppercase;
-    padding-bottom:2rem;
+    padding-bottom: 2rem;
 }
 
-.advertisement-upper .description .list {
-    padding-top:3rem;
+.advertisement-upper table {
+    margin-block: 2rem;
 }
 
 @media screen and (max-width: 992px) {
 
     .advertisement-upper {
-        margin-top:2rem;
+        margin-top: 2rem;
     }
 
     .advertisement-upper .description {
-        margin-top:1rem;
-        padding:1.5rem;
-        font-size:0.9rem;
+        margin-top: 1rem;
+        padding: 1.5rem;
+        font-size: 0.9rem;
     }
 
     .advertisement-upper .description h2 {
-        padding-bottom:1rem;
-        font-size:1.5rem;
-    }
-
-    .advertisement-upper .description .list {
-        padding-top:1rem;
+        padding-bottom: 1rem;
+        font-size: 1.5rem;
     }
 
     .advertisement-upper .image-wrapper {
         aspect-ratio: 3/2;
         width: 100%;
     }
+
     .advertisement-upper .image-wrapper img {
         object-fit: cover;
         width: 100%;

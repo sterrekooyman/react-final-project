@@ -1,46 +1,71 @@
 import Navigation from "../components/Navigation/Navigation";
 import AdvertisementUpper from "../components/AdvertisementIndividual/AdvertisementUpper";
 import AdvertisementLower from "../components/AdvertisementIndividual/AdvertisementLower";
-import RedirectArea from "../components/RedirectArea/RedirectArea";
 import Footer from "../components/Footer/Footer";
 
-import nanoek from '../assets/img/dogs/nanoek-big.png';
+import {useEffect, useState} from "react";
+import {useParams} from 'react-router-dom';
+import {doc, onSnapshot} from "firebase/firestore";
+import {db, storage} from "../firebase-config";
+import {getDownloadURL, ref} from "firebase/storage";
+import AdoptionForm from "../components/AdoptionForm/AdoptionForm";
+import {useAuth} from "../Contexts/AuthContext";
 
 function IndividualAdvertisementPage() {
+    const {dogId} = useParams();
+    const [advertisementData, setAdvertisementData] = useState([]);
+    const id = dogId;
+    const docRef = doc(db, 'advertisements', id)
+    const [dogImage, setDogImage] = useState(null);
+    const {user} = useAuth();
+
+
+    useEffect(() => {
+
+        onSnapshot(docRef, (doc) => {
+            setAdvertisementData(doc.data(), doc.id);
+        });
+
+    }, []);
+
+    useEffect(() => {
+
+        if (advertisementData.length !== 0) {
+
+            getDownloadURL(ref(storage, advertisementData.image)).then((url) => {
+                setDogImage(url);
+            })
+        }
+
+    }, [advertisementData]);
+
+
     return (
         <>
 
             <Navigation/>
 
             <AdvertisementUpper
-                image={nanoek}
-                name="Nanoek"
-                description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vitae iaculis tortor, vel lacinia lorem.
-                Aliquam erat volutpat. Donec at pellentesque est."
+                image={dogImage}
+                name={advertisementData.name}
+                description={advertisementData.description}
 
-                age="4"
-                gender="Teefje"
-                size="Medium"
-                chipped="Ja"
-                sterilized="Ja"
-                compatibleCats="Nee"
-                compatibleChildren="Ja"
-                compatibleDogs="Ja"
-                />
+                age={advertisementData.age}
+                gender={advertisementData.gender}
+                size={advertisementData.size}
+                chipped={advertisementData.chipped}
+                sterilized={advertisementData.sterilized}
+                compatibleCats={advertisementData.compatibleCats}
+                compatibleChildren={advertisementData.compatibleChildren}
+                compatibleDogs={advertisementData.compatibleDogs}
+            />
 
             <AdvertisementLower
-                dogInformation="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vitae iaculis tortor, vel lacinia lorem.
-            Aliquam erat volutpat. Donec at pellentesque est. Vestibulum volutpat accumsan molestie.
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vitae iaculis tortor, vel lacinia lorem.
-            Aliquam erat volutpat. Donec at pellentesque est."
+                dogInformation={advertisementData.description}
             />
 
-            <RedirectArea
-                text="Vul hier het adoptieformulier in!"
-                buttonText="Adopteer"
-                buttonUrl="/adopt"
-                buttonVariation="primary"
-            />
+            {/* Only show when user is logged in */}
+            {user ? <AdoptionForm dogId={dogId}/> : ""}
 
             <Footer/>
 

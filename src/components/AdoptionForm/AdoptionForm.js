@@ -1,66 +1,102 @@
 import {useForm} from 'react-hook-form';
-import './AdoptionForm.css';
+import {useNavigate} from 'react-router-dom';
 
-function AdoptionForm() {
+import {addDoc, collection} from 'firebase/firestore';
+
+import {db} from '../../firebase-config';
+
+import './Adoptionform.css';
+
+function AdoptionForm({dogId}) {
+    const adoptionFormCollectionRef = collection(db, "adoptionforms");
+    let navigate = useNavigate();
+
     const {
         register,
         handleSubmit,
         formState: {errors},
     } = useForm();
-    const onSubmit = (data) => console.log(data);
+
+    const createAdoptionForm = async (data) => {
+        try {
+            await addDoc(adoptionFormCollectionRef, data);
+            document.getElementById('adoption-form').reset();
+            navigate('/honden');
+        } catch (error) {
+            console.log(error);
+        }
+
+
+    }
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)} className="adopt shadow">
-            <legend>Adoptieformulier</legend>
+        <article id="adoptionform" className="adoptionform">
+            <div className="container ">
+                <div className="columns">
+                    <div className="column col-12">
+                        <div className="content shadow">
+                            <form id="adoption-form" onSubmit={handleSubmit(createAdoptionForm)}
+                                  className="adopt shadow">
+                                <legend>Adoptieformulier</legend>
 
-            <label htmlFor="name">
-                Naam
-                <input
-                    type="text"
-                    {...register("name", {
-                        required: "Dit veld is verplicht"
-                    })}
-                />
-                {errors.name && <p className="error">{errors.name.message}</p>}
-            </label>
+                                <input
+                                    type="hidden"
+                                    value={dogId}
+                                    {...register("dogId")}
+                                />
 
-            <label htmlFor="email">
-                Emailadres
-                <input
-                    type="email"
-                    {...register("email", {
-                        required: "Dit veld is verplicht"
-                    })}
-                />
-                {errors.email && <p className="error" >{errors.email.message}</p>}
-            </label>
+                                <label htmlFor="name">
+                                    Naam
+                                    <input
+                                        type="text"
+                                        {...register("name", {
+                                            required: "Dit veld is verplicht"
+                                        })}
+                                    />
+                                    {errors.name && <p className="error">{errors.name.message}</p>}
+                                </label>
 
-             <label htmlFor="phone-number">
-                 <p>Telefoonnummer</p>
-                 <input
-                     type="phone"
-                     {...register("phone", {
-                         required: "Dit veld is verplicht"
-                     })}
-                 />
-                 {errors.phone && <p className="error">{errors.phone.message}</p>}
-             </label>
+                                <label htmlFor="email">
+                                    Emailadres
+                                    <input
+                                        type="email"
+                                        {...register("email", {
+                                            required: "Dit veld is verplicht"
+                                        })}
+                                    />
+                                    {errors.email && <p className="error">{errors.email.message}</p>}
+                                </label>
 
-            <label htmlFor="message">
-                Korte beschrijving
-                <textarea
-                    {...register("message", {
-                        required: "Dit veld is verplicht"
-                    })}
-                    type="text"
-                    placeholder="Beschrijf je woonsituatie, de motivatie achter de adoptie en geef een korte beschrijving betreft wie jij bent. "
-                >
-            </textarea>
-                {errors.message && <p className="error">{errors.message.message}</p>}
-            </label>
-            <button className="button button-primary" type="submit">Verstuur</button>
-            <a href="/advertisement">Terug naar de advertentie</a>
-        </form>
+                                <label htmlFor="phone-number">
+                                    <p>Telefoonnummer</p>
+                                    <input
+                                        type="phone"
+                                        {...register("phone", {
+                                            required: "Dit veld is verplicht"
+                                        })}
+                                    />
+                                    {errors.phone && <p className="error">{errors.phone.message}</p>}
+                                </label>
+
+                                <label htmlFor="message">
+                                    Korte beschrijving
+                                    <textarea
+                                        {...register("message", {
+                                            required: "Dit veld is verplicht"
+                                        })}
+                                        type="text"
+                                        placeholder="Beschrijf je woonsituatie, de motivatie achter de adoptie en geef een korte beschrijving betreft wie jij bent. "
+                                    />
+                                    {errors.message && <p className="error">{errors.message.message}</p>}
+                                </label>
+                                <button className="button button-primary" type="submit">Verstuur</button>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
 
     );
 }
