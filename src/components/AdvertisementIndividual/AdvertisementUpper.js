@@ -1,5 +1,7 @@
 import './AdvertisementUpper.css';
 import {HashLink} from "react-router-hash-link";
+import {useAuth} from "../../Contexts/AuthContext";
+import {Button} from "../Button/Button";
 
 function AdvertisementUpper({
                                 image,
@@ -15,7 +17,7 @@ function AdvertisementUpper({
                                 compatibleDogs
                             }) {
 
-
+    const {user} = useAuth();
     return (
         <article className="advertisement-upper">
             <div className="container">
@@ -31,6 +33,7 @@ function AdvertisementUpper({
                             <p>{description}</p>
                             <p className="list">{subtext}</p>
                             <table>
+                                <tbody>
                                 <tr>
                                     <td>Leeftijd:</td>
                                     <td>{age} jaar</td>
@@ -59,8 +62,11 @@ function AdvertisementUpper({
                                     <td>Kan samen met honden:</td>
                                     <td>{compatibleDogs}</td>
                                 </tr>
+                                </tbody>
                             </table>
-                            <HashLink className="button button-primary" to="#adoptionform">Adopteer mij</HashLink>
+                            {user ?
+                                <HashLink className="button button-primary" to="#adoptionform">Adopteer mij</HashLink>
+                                : <Button variation={"primary"} url={"/log-in"}>Adopteer mij</Button>}
                         </div>
                     </div>
                 </div>

@@ -38,6 +38,7 @@ export function AdvertisementsOverview({image, dogName, age, gender, id}) {
                     <h2>{dogName}</h2>
                     <div className="specifics">
                         <table>
+                            <tbody>
                             <tr>
                                 <td>Leeftijd:</td>
                                 <td>{age} jaar</td>
@@ -46,6 +47,7 @@ export function AdvertisementsOverview({image, dogName, age, gender, id}) {
                                 <td>Geslacht:</td>
                                 <td>{gender}</td>
                             </tr>
+                            </tbody>
                         </table>
                     </div>
                     <Button url={`/honden/${id}`} variation="secondary" size="small">Meer informatie</Button>

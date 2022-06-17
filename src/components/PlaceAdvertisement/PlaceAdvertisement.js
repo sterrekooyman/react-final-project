@@ -5,7 +5,7 @@ import {useForm} from "react-hook-form";
 import {useNavigate} from 'react-router-dom';
 
 import {addDoc, collection, serverTimestamp} from 'firebase/firestore';
-import {ref, uploadBytes, getDownloadURL} from 'firebase/storage';
+import {ref, uploadBytes} from 'firebase/storage';
 
 import {v4} from 'uuid';
 
@@ -21,6 +21,8 @@ function PlaceAdvertisement() {
         handleSubmit,
         register,
         watch,
+        setError,
+        clearErrors,
         formState: {errors}
     } = useForm();
 
@@ -41,15 +43,11 @@ function PlaceAdvertisement() {
         if (imageUpload == null) return;
 
         const imagePath = `images/${imageUpload.name + v4()}`;
-
         const imageRef = ref(storage, imagePath);
 
-        try {
-            await uploadBytes(imageRef, imageUpload);
-            createAdvertisement(imagePath, data);
-        } catch (error) {
-            console.log(error);
-        }
+        await uploadBytes(imageRef, imageUpload);
+
+        createAdvertisement(imagePath, data);
     };
 
     // Step 2: Upload tekst and image reference
@@ -58,15 +56,24 @@ function PlaceAdvertisement() {
         data.image = imagePath;
         data = {...data, createdAt: serverTimestamp(), adoptionStatus: false}
 
-        try {
-            await addDoc(advertisementCollectionRef, data);
-            // Reset form on success
-            document.getElementById('place-advertisement').reset();
-            navigate('/honden');
-        } catch (error) {
-            console.log(error);
-        }
+        await addDoc(advertisementCollectionRef, data);
+
+        // Reset form on success
+        document.getElementById('place-advertisement').reset();
+        navigate('/honden');
     };
+
+    const validateImageFormat = (imageObject) => {
+        const imageFormatRegex = /\.?(gif|jpe?g|tiff?|png|webp)$/i;
+        if (imageFormatRegex.test(imageObject.type)) {
+            clearErrors('image');
+        } else {
+            setError('image', {
+                type: 'custom',
+                message: 'Bestandsextensie onjuist, gebruik JPG/PNG/TIFF/GIF'
+            });
+        }
+    }
 
     return (
         <>
@@ -78,6 +85,7 @@ function PlaceAdvertisement() {
                     <input
                         type="file"
                         {...register("image", {
+                            onChange: (e) => validateImageFormat(e.nativeEvent.srcElement.files[0]),
                             required: "Dit veld is verplicht"
                         })}
                     />
@@ -95,35 +103,37 @@ function PlaceAdvertisement() {
                     {errors.name && <p className="error">{errors.name.message}</p>}
                 </label>
 
+                <label htmlFor="age">
+                    Wat is de leeftijd van de hond?
+                    <input
+                        type="number"
+                        {...register("age", {
+                            required: "Dit veld is verplicht",
+                            min: 0,
+                            max: 20,
+                        })}
+                    />
+                    {errors.age && <p className="error">{errors.age.message}</p>}
+                </label>
+
                 <label htmlFor="gender">
                     Is het een teefje of een reutje?
-                    <select {...register("gender", {
+                    <select defaultValue={""} {...register("gender", {
                         required: "Dit veld is verplicht"
                     })}>
-                        <option value="" disabled selected>Selecteer</option>
+                        <option value="" disabled>Selecteer</option>
                         <option value="Teefje">Teefje</option>
                         <option value="Reutje">Reutje</option>
                     </select>
                     {errors.gender && <p className="error">{errors.gender.message}</p>}
                 </label>
 
-                <label htmlFor="age">
-                    Wat is de leeftijd van de hond?
-                    <input
-                        type="number"
-                        {...register("age", {
-                            required: "Dit veld is verplicht"
-                        })}
-                    />
-                    {errors.age && <p className="error">{errors.age.message}</p>}
-                </label>
-
                 <label htmlFor="size">
                     Wat is de grootte van de hond?
-                    <select {...register("size", {
+                    <select defaultValue={""} {...register("size", {
                         required: "Dit veld is verplicht"
                     })}>
-                        <option value="" disabled selected>Selecteer</option>
+                        <option value="" disabled>Selecteer</option>
                         <option value="Klein">Klein</option>
                         <option value="Middel">Middel</option>
                         <option value="Groot">Groot</option>
@@ -133,10 +143,10 @@ function PlaceAdvertisement() {
 
                 <label htmlFor="chipped">
                     Is hij/zij gechipt?
-                    <select {...register("chipped", {
+                    <select defaultValue={""} {...register("chipped", {
                         required: "Dit veld is verplicht"
                     })}>
-                        <option value="" disabled selected>Selecteer</option>
+                        <option value="" disabled>Selecteer</option>
                         <option value="Ja">Ja</option>
                         <option value="Nee">Nee</option>
                     </select>
@@ -145,10 +155,10 @@ function PlaceAdvertisement() {
 
                 <label htmlFor="compatibleCats">
                     Kan hij/zij met katten?
-                    <select {...register("compatibleCats", {
+                    <select defaultValue={""} {...register("compatibleCats", {
                         required: "Dit veld is verplicht"
                     })}>
-                        <option value="" disabled selected>Selecteer</option>
+                        <option value="" disabled>Selecteer</option>
                         <option value="Ja">Ja</option>
                         <option value="Nee">Nee</option>
                     </select>
@@ -158,10 +168,10 @@ function PlaceAdvertisement() {
 
                 <label htmlFor="compatibleDogs">
                     Kan hij/zij met honden?
-                    <select {...register("compatibleDogs", {
+                    <select defaultValue={""} {...register("compatibleDogs", {
                         required: "Dit veld is verplicht"
                     })}>
-                        <option value="" disabled selected>Selecteer</option>
+                        <option value="" disabled>Selecteer</option>
                         <option value="Ja">Ja</option>
                         <option value="Nee">Nee</option>
                     </select>
@@ -171,10 +181,10 @@ function PlaceAdvertisement() {
 
                 <label htmlFor="compatibleChildren">
                     Kan hij/zij met kinderen?
-                    <select {...register("compatibleChildren", {
+                    <select defaultValue={""} {...register("compatibleChildren", {
                         required: "Dit veld is verplicht"
                     })}>
-                        <option value="" disabled selected>Selecteer</option>
+                        <option value="" disabled>Selecteer</option>
                         <option value="Ja">Ja</option>
                         <option value="Nee">Nee</option>
                     </select>

@@ -9,12 +9,11 @@
     align-items: center;
 }
 
-.footer-container .icons {
-    max-width: 1.5rem;
-    display: flex;
-    flex-direction: row;
-    gap: 1rem;
+.footer-container p {
+    color: white;
+    font-weight: bold;
 }
+
 
 .footer-container .links {
     display: flex;

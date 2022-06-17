@@ -2,7 +2,7 @@ import {Button} from "../Button/Button";
 import './RedirectArea.css';
 
 function RedirectArea({text, buttonText, buttonUrl, buttonVariation}) {
-    return(
+    return (
         <div className="redirect">
             <div className="container">
                 <div className="columns">

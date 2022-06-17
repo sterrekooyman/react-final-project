@@ -33,7 +33,7 @@ function ContactForm() {
                 <input
                     type="text"
                     {...register("name", {
-                        required: "Dit veld is verplicht"
+                        required: "Dit veld is verplicht",
                     })}
                 />
                 {errors.name && <p className="error">{errors.name.message}</p>}
@@ -54,7 +54,11 @@ function ContactForm() {
                 Bericht
                 <textarea
                     {...register("message", {
-                        required: "Dit veld is verplicht"
+                        required: "Dit veld is verplicht",
+                        minLength: {
+                            value: 10,
+                            message: "Bericht moet minimaal 10 karakters bevatten"
+                        }
                     })}
                     type="text"
                 >

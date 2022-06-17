@@ -11,21 +11,19 @@ function LoginForm() {
 
     const [errorMessage, setErrorMessage] = useState(null)
 
-    const { logIn } = useAuth();
+    const {logIn} = useAuth();
 
     const onSubmit = async (data) => {
         try {
             await logIn(data.email, data.password);
         } catch (err) {
             console.log(err.code);
-            if (err.code == "auth/wrong-password") {
-                setErrorMessage("The password is wrong.");
-            } else if (err.code == "auth/invalid-email") {
-                setErrorMessage("The email address is not valid.");
-            } else if (err.code == "auth/operation-not-allowed") {
-                setErrorMessage("Operation not allowed.");
-            } else if (err.code == "auth/weak-password") {
-                setErrorMessage("The password is too weak.");
+            if (err.code === "auth/wrong-password") {
+                setErrorMessage("Het wachtwoord is onjuist");
+            } else if (err.code === "auth/invalid-email") {
+                setErrorMessage("Het emailadres is onjuist");
+            } else if (err.code === "auth/weak-password") {
+                setErrorMessage("Het wachtwoord is te zwak");
             } else {
                 setErrorMessage(err.message);
             }
@@ -36,7 +34,7 @@ function LoginForm() {
     return (
         <form onSubmit={handleSubmit(onSubmit)} className="shadow">
             <legend>Log in</legend>
-            {errorMessage && <p className="server-err" >{errorMessage}</p>}
+            {errorMessage && <p className="server-err">{errorMessage}</p>}
 
             <label htmlFor="email">
                 Emailadres
@@ -46,7 +44,7 @@ function LoginForm() {
                         required: "Dit veld is verplicht"
                     })}
                 />
-                {errors.email && <p className="error" >{errors.email.message}</p>}
+                {errors.email && <p className="error">{errors.email.message}</p>}
             </label>
 
             <label htmlFor="password">
@@ -57,7 +55,7 @@ function LoginForm() {
                     })}
                     type="password"
                 >
-            </input>
+                </input>
                 {errors.password && <p className="error">{errors.password.message}</p>}
             </label>
             <button className="button button-primary" type="submit">Login</button>

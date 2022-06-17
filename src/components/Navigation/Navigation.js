@@ -13,7 +13,6 @@ function Navigation() {
     const [open, setOpen] = useState(false);
 
     window.addEventListener('resize', (event) => {
-        console.log(window.innerWidth);
         if (window.innerWidth > 992) {
             setOpen(false);
         }
@@ -24,7 +23,7 @@ function Navigation() {
             <div className="container">
                 <div className="columns">
                     <div className="col-12 nav-container">
-                        <NavLink to="/" exact className="logo-wrapper">
+                        <NavLink to="/" className="logo-wrapper">
                             <img className="logo" src={logo} alt="logo"/>
                         </NavLink>
                         <div className="desktop-nav">

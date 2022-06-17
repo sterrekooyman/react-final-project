@@ -20,10 +20,9 @@ function OverviewAdvertisementsPage() {
     const advertisementsCollectionRef = collection(db, "advertisements");
 
     useEffect(() => {
-        const getAdvertisements = async () => {
+        async function getAdvertisements() {
             const data = await getDocs(advertisementsCollectionRef);
             setAdvertisementsList(data.docs.map((doc) => ({...doc.data(), id: doc.id})));
-            console.log(data.docs.map((doc) => ({...doc.data(), id: doc.id})));
         };
         getAdvertisements();
     }, []);

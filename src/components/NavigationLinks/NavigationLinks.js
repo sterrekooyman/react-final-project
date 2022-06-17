@@ -6,17 +6,17 @@ function NavigationLinks() {
 
     return (
         <>
-            <NavLink to="/honden" activeClassName="active">Honden</NavLink>
-            <NavLink to="/contact" activeClassName="active">Contact</NavLink>
+            <NavLink to="/honden">Honden</NavLink>
+            <NavLink to="/contact">Contact</NavLink>
             {
                 user ?
                     <>
-                        <NavLink to="/plaats-advertentie" activeClassName="active">Plaats advertentie</NavLink>
-                        <NavLink onClick={logOut} to="/" activeClassName="active">Uitloggen</NavLink>
+                        <NavLink to="/plaats-advertentie">Plaats advertentie</NavLink>
+                        <NavLink onClick={logOut} to="/">Uitloggen</NavLink>
                     </>
                     : <>
-                        <NavLink to="/log-in" activeClassName="active">Inloggen</NavLink>
-                        <NavLink to="/registreer" activeClassName="active">Registreren</NavLink>
+                        <NavLink to="/log-in">Inloggen</NavLink>
+                        <NavLink to="/registreer">Registreren</NavLink>
                     </>
             }
         </>

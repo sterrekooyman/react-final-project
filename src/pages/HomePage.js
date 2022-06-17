@@ -4,8 +4,8 @@ import Article from ".././components/Article/Article";
 import CallToAction from ".././components/CallToAction/CallToAction";
 import Footer from ".././components/Footer/Footer";
 
-import articleOne from '../assets/img/article/article-1.png';
-import articleTwo from '../assets/img/article/article-2.png';
+import articleOne from '../assets/img/article/article-1.jpg';
+import articleTwo from '../assets/img/article/article-2.jpg';
 
 function HomePage() {
     return (

@@ -26,7 +26,6 @@ function AdoptionForm({dogId}) {
             console.log(error);
         }
 
-
     }
 
     return (
@@ -79,10 +78,14 @@ function AdoptionForm({dogId}) {
                                 </label>
 
                                 <label htmlFor="message">
-                                    Korte beschrijving
+                                    Geef een korte beschrijving over jezelf
                                     <textarea
                                         {...register("message", {
-                                            required: "Dit veld is verplicht"
+                                            required: "Dit veld is verplicht",
+                                            minLength: {
+                                                value: 100,
+                                                message: "Om een goede match te kunnen maken hebben we een uitgebreidere beschrijving van je nodig"
+                                            },
                                         })}
                                         type="text"
                                         placeholder="Beschrijf je woonsituatie, de motivatie achter de adoptie en geef een korte beschrijving betreft wie jij bent. "

@@ -10,6 +10,7 @@ import {db, storage} from "../firebase-config";
 import {getDownloadURL, ref} from "firebase/storage";
 import AdoptionForm from "../components/AdoptionForm/AdoptionForm";
 import {useAuth} from "../Contexts/AuthContext";
+import RedirectArea from "../components/RedirectArea/RedirectArea";
 
 function IndividualAdvertisementPage() {
     const {dogId} = useParams();
@@ -19,30 +20,22 @@ function IndividualAdvertisementPage() {
     const [dogImage, setDogImage] = useState(null);
     const {user} = useAuth();
 
-
     useEffect(() => {
-
         onSnapshot(docRef, (doc) => {
             setAdvertisementData(doc.data(), doc.id);
         });
-
     }, []);
 
     useEffect(() => {
-
         if (advertisementData.length !== 0) {
-
             getDownloadURL(ref(storage, advertisementData.image)).then((url) => {
                 setDogImage(url);
             })
         }
-
     }, [advertisementData]);
-
 
     return (
         <>
-
             <Navigation/>
 
             <AdvertisementUpper
@@ -59,16 +52,19 @@ function IndividualAdvertisementPage() {
                 compatibleChildren={advertisementData.compatibleChildren}
                 compatibleDogs={advertisementData.compatibleDogs}
             />
-
             <AdvertisementLower
                 dogInformation={advertisementData.description}
             />
 
-            {/* Only show when user is logged in */}
-            {user ? <AdoptionForm dogId={dogId}/> : ""}
+            {/* Only show form when logged in, else show login redirect */}
+            {user ? <AdoptionForm dogId={dogId}/> : <RedirectArea
+                text="Log in om het adoptieformulier in te vullen!"
+                buttonText="Inloggen"
+                buttonUrl="/log-in"
+                buttonVariation="secondary"
+            />}
 
             <Footer/>
-
         </>
     );
 }

@@ -15,11 +15,11 @@ function Hero() {
                         <p>Wij vinden dat er teveel honden zijn zonder een liefdevol thuis.
                             Ons doel is daarom ook om zoveel mogelijk honden een fijne en welkome plek te geven.
                             Een thuis waar ze geaccepteerd en geliefd worden, precies zoals ze zijn.
-                            Dit platform is opgericht om de stap in het vinden van jouw perfecte hondenmatch zo klein mogelijk te maken.
+                            Dit platform is opgericht om de stap in het vinden van jouw perfecte hondenmatch zo klein
+                            mogelijk te maken.
                         </p>
                         <ButtonGroup>
                             <Button url="/honden" variation="primary">Bekijk alle honden</Button>
-                            <Button url="/log-in" variation="secondary">Inloggen</Button>
                         </ButtonGroup>
                     </div>
 
