@@ -2,6 +2,7 @@ Installatiehandleiding
 
 Hi! Welkom bij mijn webapplicatie, HondAdoptie. Dit project is gemaakt ter afsluiting van de bootcamp ‘front-end
 development’ aan Hogeschool Novi. Hieronder lees je wat je nodig hebt om het project draaiende te krijgen. Veel plezier!
+
 Installatie De eerste stap is het clonen van de repository met een van deze links:
 SSH: git@github.com:sterrekooyman/react-final-project.git
 HTTPS: https://github.com/sterrekooyman/react-final-project.git
