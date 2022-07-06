@@ -75,4 +75,6 @@ function AdvertisementUpper({
     );
 }
 
+/* If user is logged in, show adoption section. */
+
 export default AdvertisementUpper;

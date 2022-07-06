@@ -24,7 +24,7 @@ function IndividualAdvertisementPage() {
         onSnapshot(docRef, (doc) => {
             setAdvertisementData(doc.data(), doc.id);
         });
-    }, []);
+    }, [docRef]);
 
     useEffect(() => {
         if (advertisementData.length !== 0) {

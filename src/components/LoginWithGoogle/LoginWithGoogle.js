@@ -7,6 +7,7 @@ function LoginWithGoogle() {
 
     const {googleSignIn} = useAuth();
 
+    /* Logging in when firing this function on the onClick on form, using Firebase */
     const handleGoogleSignIn = async (e) => {
         e.preventDefault();
         try {

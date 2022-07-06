@@ -17,6 +17,8 @@ function AdoptionForm({dogId}) {
         formState: {errors},
     } = useForm();
 
+
+    /* Send data to firebase, firing this function on the onSubmit/handleSubmit. If successful, redirect to /honden. */
     const createAdoptionForm = async (data) => {
         try {
             await addDoc(adoptionFormCollectionRef, data);

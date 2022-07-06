@@ -15,6 +15,8 @@ function ContactForm() {
         formState: {errors},
     } = useForm();
 
+    /* Send data from contact form to Firebase with firing this function on onSubmit/handleSubmit. */
+
     const createContactForm = async (data) => {
         try {
             await addDoc(contactFormCollectionRef, data);

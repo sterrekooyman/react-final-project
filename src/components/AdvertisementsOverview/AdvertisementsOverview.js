@@ -21,7 +21,7 @@ export function AdvertisementsOverview({image, dogName, age, gender, id}) {
 
     const [dogImage, setDogImage] = useState(null);
 
-    // Get Firebase img url
+    /* Get Firebase img url */
     useEffect(() => {
         getDownloadURL(ref(storage, image)).then((url) => {
             setDogImage(url);

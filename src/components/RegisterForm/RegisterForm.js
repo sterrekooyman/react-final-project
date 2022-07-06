@@ -6,6 +6,8 @@ import './RegisterForm.css';
 
 import {useAuth} from "../../Contexts/AuthContext";
 
+/* Register with Authentication from Firebase */
+
 function RegisterForm() {
     const {
         register,

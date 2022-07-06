@@ -12,6 +12,7 @@ import logo from "../../assets/img/logo/logo.png";
 function Navigation() {
     const [open, setOpen] = useState(false);
 
+    /* When the window is less than 992px, switch to hamburger menu. */
     window.addEventListener('resize', (event) => {
         if (window.innerWidth > 992) {
             setOpen(false);

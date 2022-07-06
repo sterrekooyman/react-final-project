@@ -2,6 +2,8 @@ import {useState} from "react";
 import {useForm} from 'react-hook-form';
 import {useAuth} from "../../Contexts/AuthContext";
 
+/* Logging in using Authentication from Firebase */
+
 function LoginForm() {
     const {
         register,

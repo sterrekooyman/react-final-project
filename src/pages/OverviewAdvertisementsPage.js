@@ -19,6 +19,7 @@ function OverviewAdvertisementsPage() {
     const [advertisementsList, setAdvertisementsList] = useState([]);
     const advertisementsCollectionRef = collection(db, "advertisements");
 
+    /* Fetch data from Firebase with getDocs function from FireStore */
     useEffect(() => {
         async function getAdvertisements() {
             const data = await getDocs(advertisementsCollectionRef);
