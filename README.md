@@ -25,7 +25,7 @@ Met dit commando installeer je alle vereiste NPM packages.
 
 `npm run start`
 
-Start de app in development mode. Open It correctly bundles React in production mode and optimizes the build for the best performance.http://localhost:3000 om de app in de browser te bekijken.
+Met dit commando start je de app in development mode. Open http://localhost:3000 om de app in de browser te bekijken.
 De pagina zal automatisch herladen bij het maken van aanpassingen. Ook zie je lint errors in de console.
 
 `npm run build`
